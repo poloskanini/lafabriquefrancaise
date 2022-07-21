@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'AutumnInNovember';
+  src: url("/lafabriquefrancaise/public/assets/fonts/Autumn\ in\ November.ttf");
+}
+
+/* .navbar-brand {
+  font-family: 'AutumnInNovember', sans-serif;
+} */
+
 body {
   position: relative;
   min-height: 100vh;
