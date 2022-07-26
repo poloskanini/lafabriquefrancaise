@@ -54,11 +54,23 @@ class ProductCrudController extends AbstractCrudController
 
     public function configureActions(Actions $actions): Actions
     {
+        // Custom Button qui doit lancer une demande de confirmation "êtes vous sûr de vouloir enregistrer les modifications ?" + sauver et continuer.
+        $customButton = Action::new('customButton', 'Custom Button')
+            ->displayAsLink()
+            ->setCssClass('btn btn-success')
+            ->linkToCrudAction('customButton');
         
         return $actions
             // ...
+            ->add(Crud::PAGE_EDIT, Action::DELETE) // ce qu'on cherche à reproduire comme effet
             ->add(Crud::PAGE_INDEX, Action::DETAIL)
             ->add(Crud::PAGE_EDIT, Action::SAVE_AND_ADD_ANOTHER)
+            ->add(Crud::PAGE_EDIT, $customButton)
         ;
+    }
+
+    public function customButton()
+    {
+        dd('Doit lancer une modal Bootstrap de demande de confirmation + sauver et continuer');
     }
 }
