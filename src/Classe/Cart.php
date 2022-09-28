@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class Cart
 {
     private $stack;
+    private $entityManager;
  
     public function __construct(EntityManagerInterface $entityManager, RequestStack $stack)
     {
