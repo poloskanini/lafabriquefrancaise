@@ -16,8 +16,8 @@
         "build": "encore production --progress"
     },
     "engines": {
-        "node": "v16.13.1.*",
-        "npm": "8.1.2.*"
+        "node": "v16.13.*",
+        "npm": "8.1.*"
     },
     "dependencies": {
         "swup": "^2.0.19"
