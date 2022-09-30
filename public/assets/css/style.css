@@ -104,7 +104,7 @@ html.is-animating .transition-fade {
 }
 
 .hero-content h1 {
-  font-size: clamp(45px, 5vw, 140px);
+  font-size: clamp(45px, 6vw, 140px);
   font-weight: 900;
   font-family: 'AutumnInNovember', sans-serif;
   text-shadow: rgb(0 0 0 / 90%) 0px 2px 2px;
@@ -115,7 +115,7 @@ html.is-animating .transition-fade {
 
 .hero-content p {
   font-size: clamp(20px, 2.5vw, 38px);
-  font-weight: 100;
+  font-weight: 300;
   margin-top: 20px;
   text-shadow: rgb(0 0 0 / 90%) 0px 2px 2px;
   user-select: none;

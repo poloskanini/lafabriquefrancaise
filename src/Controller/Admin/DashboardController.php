@@ -23,7 +23,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('La Boutique Française');
+            ->setTitle('La Fargouinette');
     }
 
     public function configureMenuItems(): iterable
@@ -31,7 +31,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class);
         yield MenuItem::linkToCrud('Categories', 'fa fa-list', Category::class);
-        yield MenuItem::linkToCrud('Products', 'fa fa-tag', Product::class);
+        yield MenuItem::linkToCrud('Produits', 'fa fa-tag', Product::class);
     }
 
 }
