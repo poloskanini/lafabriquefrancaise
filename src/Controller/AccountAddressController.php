@@ -25,6 +25,7 @@ class AccountAddressController extends AbstractController
         return $this->render('account/address.html.twig');
     }
 
+    // Ajouter une adresse
     #[Route('/compte/ajouter-une-adresse', name: 'app_account_address_add')]
     public function add(Request $request): Response
     {
@@ -41,15 +42,16 @@ class AccountAddressController extends AbstractController
             return $this->redirectToRoute('app_account_address');
         }
         
-        return $this->render('account/address_add.html.twig', [
+        return $this->render('account/address_form.html.twig', [
             'form' => $form->createView()
         ]);
     }
 
+    // Modifier une adresse
     #[Route('/compte/modifier-une-adresse/{id}', name: 'app_account_address_edit')]
     public function edit(Request $request, Address $address, $id): Response
     {
-        $adress = $this->entityManager->getRepository(Address::class)->findOneById($id);
+        $address = $this->entityManager->getRepository(Address::class)->findOneById($id);
 
         if(!$address || $address->getUser() != $this->getUser()) {
             return $this->redirectToRoute('app_account_address');
@@ -65,8 +67,24 @@ class AccountAddressController extends AbstractController
             return $this->redirectToRoute('app_account_address');
         }
         
-        return $this->render('account/address_add.html.twig', [
+        return $this->render('account/address_form.html.twig', [
             'form' => $form->createView()
         ]);
     }
+
+    // Supprimer une adresse
+    #[Route('/compte/supprimer-une-adresse/{id}', name: 'app_account_address_delete')]
+    public function delete($id): Response
+    {
+        $address = $this->entityManager->getRepository(Address::class)->findOneById($id);
+
+        if($address && $address->getUser() == $this->getUser()) {
+            $this->entityManager->remove($address);
+            $this->entityManager->flush();
+            
+        }
+
+            return $this->redirectToRoute('app_account_address');
+    }
+
 }

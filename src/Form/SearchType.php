@@ -38,8 +38,8 @@ class SearchType extends AbstractType
         'class' => "btn-block btn-info"
       ]
     ]);
-
   }
+  
   public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
