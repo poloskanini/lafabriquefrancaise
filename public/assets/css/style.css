@@ -121,3 +121,8 @@ html.is-animating .transition-fade {
   user-select: none;
   padding: 0 15%;
 }
+
+.block-small {
+  max-width: 600px;
+  margin: 0 auto;
+}
