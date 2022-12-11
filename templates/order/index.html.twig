@@ -17,8 +17,26 @@
 
             </div>
             <div class="col-md-6">
-                <b>Récapitulatif de ma commande</b><br>
-                <b>Bouton pour payer</b>
+                <div class="text-center">
+                    <b>Récapitulatif de ma commande</b><br>
+                    <p>Retrouvez le récapitulatif de vos produits </p>
+                </div>
+                <div class="order-summary">
+                    {% for product in cart %}
+                        <div class="row mt-2">
+                            <div class="col-2">
+                                <img src="/uploads/{{ product.product.illustration}}" alt="{{ product.product.name }}" height="75px">
+                            </div>
+                            <div class="col-8 my-auto">
+                                {{ product.product.name }} <br/>
+                            </div>
+                            <div class="col-2 my-auto">
+                                x {{ product.quantity }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <br>
             </div>
         </div>
     </div>
