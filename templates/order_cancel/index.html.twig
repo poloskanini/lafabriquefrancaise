@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La Fargouinette - Erreur de paiement{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+
+    <iframe style="border:none" src="https://embed.lottiefiles.com/animation/102271"></iframe>
+    <h2>Erreur de paiement.</h2> <br>
+    <strong><h3> Bonjour {{ order.user.firstname }} {{ order.user.lastname }},<br><br></h3></strong>
+    <p>
+        Il semblerait que le paiement de votre commande n° <strong>{{ order.reference }}</strong> ait échoué.<br>
+        Une confirmation d'erreur vient de vous être envoyée par email à l'adresse {{ order.user.email }}. <br>
+    </p>
+    <hr>
+    <strong><a href="{{ path('app_order') }}" class="btn btn-secondary">Réessayer le paiement</a></strong>
+</div>
+{% endblock %}

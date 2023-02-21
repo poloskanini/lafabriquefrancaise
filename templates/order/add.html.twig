@@ -1,5 +1,32 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript">
+    var stripe = Stripe("pk_test_51MdYysKfVCOEtJ0eU8YaKkKNcACsP2NDPZ9OwE69N46k1EUary6AH0G80rIj4P3i5QvkrFX1zP9Kt5nyXy7FBorM002IjGYDJn");
+    var checkoutButton = document.getElementById("checkout-button");
+    checkoutButton.addEventListener("click", function () => {
+        fetch("/commande/create-session/{{ reference }}", {
+            method: "POST",
+        })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (session) {
+            return stripe.redirectToCheckout({ sessionId: session.id });
+        })
+        .then(function (result) {
+            if (result.error) {
+                alert(result.error.message);
+            }
+        })
+        .catch(function (error) {
+            console.error("Error:", error)
+        });
+    });
+    </script>
+{% endblock %}
+
 {% block title %}Paiement de ma commande - La Fargouinette{% endblock %}
 
 {% block content %}
@@ -20,7 +47,7 @@
               <div class="form-check">
                 {{ carrier.name }} <br/>
                 {{ carrier.description }} <br/>
-                {{ carrier.price|number_format(2, ',','.') }} €<br/>
+                {{ (carrier.price / 100)|number_format(2, ',','.') }} €<br/>
               </div>
             </div>
             <div class="col-md-6">
@@ -53,13 +80,17 @@
 
                 <hr>
                 <strong>Sous-total : </strong> {{ (total / 100)|number_format(2, ',','.') }} €<br/>
-                <strong>Livraison : </strong> {{ (carrier.price)|number_format(2, ',','.') }} € <br/>
+                <strong>Livraison : </strong> {{ (carrier.price / 100)|number_format(2, ',','.') }} € <br/>
                 <hr>
-                <strong>Total : </strong> {{ ((total / 100) + carrier.price)|number_format(2, ',','.') }} €<br/>
+                <strong>Total : </strong> {{ ((total / 100) + (carrier.price / 100))|number_format(2, ',','.') }} €<br/>
 
-
-                <a href="" class="btn btn-success btn-block mt-3">Payer {{ ((total / 100) + carrier.price)|number_format(2, ',','.') }} €</a>
+              
+                <a href="{{ path('app_stripe_create_session', {'reference': reference}) }}" class="btn btn-success btn-block mt-3" id="checkout-button">Payer {{ ((total / 100) + (carrier.price / 100))|number_format(2, ',','.') }} €</a>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block script %}
+    
 {% endblock %}

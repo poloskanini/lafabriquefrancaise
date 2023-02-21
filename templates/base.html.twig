@@ -15,6 +15,7 @@ l'oliveraie de la Fargouinette est idéalement placée au sein du domaine d'Appe
   {% block javascripts %}
     {{ encore_entry_script_tags('app')}}
   {% endblock %}
+  
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -147,10 +148,10 @@ l'oliveraie de la Fargouinette est idéalement placée au sein du domaine d'Appe
         </footer>
     </main>
 
-<script src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="assets/js/app.js"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
+<script src="https://js.stripe.com/v3/"></script>
+
 
 </body>
 </html>

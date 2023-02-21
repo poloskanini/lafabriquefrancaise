@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La Fargouinette - Commande validée !{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+
+    <iframe style="border: none" src="https://embed.lottiefiles.com/animation/69184"></iframe>
+    <h2>Confirmation de commande</h2> <br>
+    <strong><h3> Merci {{ order.user.firstname }} {{ order.user.lastname }} !<br><br></h3></strong>
+    <p>
+        Votre commande n° <strong>{{ order.reference }}</strong> a été correctement réglée.<br>
+        Une confirmation de vos articles vient de vous être envoyée par email à l'adresse {{ order.user.email }}. <br>
+        <hr> <br>
+        Votre commande vous sera livrée par {{ order.carrierName }} {{ (order.carrierName == 'Colissimo') ? 'sous 72H' :'demain' }} à l'adresse suivante : <br>
+        {{ order.delivery|raw}}
+    </p>
+    <hr>
+    Pour suivre votre commande, rendez-vous dans votre <a href="{{ path('app_account') }}">compte.</a>
+</div>
+{% endblock %}
