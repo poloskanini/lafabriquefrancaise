@@ -39,6 +39,18 @@ class OrderRepository extends ServiceEntityRepository
         }
     }
 
+    /* Requête qui permet de récupérer les produits en fonction de la recherche de l'utilisateur*/
+    public function findSuccessOrders($user)
+    {
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.isPaid = 1')
+            ->andWhere('o.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('o.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Order[] Returns an array of Order objects
 //     */

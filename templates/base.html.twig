@@ -19,6 +19,7 @@ l'oliveraie de la Fargouinette est idéalement placée au sein du domaine d'Appe
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         .bd-placeholder-img {
@@ -63,7 +64,7 @@ l'oliveraie de la Fargouinette est idéalement placée au sein du domaine d'Appe
                 {% if app.user %}
                 <a href="{{ path('app_account') }}">Mon compte <small> ({{ app.user.firstName }})</small></a> | <a href="{{ path('app_logout') }}">Déconnexion</a>
                 {% else %}
-                <a href="{{ path('app_login') }}">Connexion</a> | <a href="{{ path('register') }}">Inscription</a>
+                <a href="{{ path('app_login') }}">Connexion</a> | <a href="{{ path('register') }}">Je m'inscris</a>
                 {% endif %}
                 <a href="{{ path('cart') }}">
                     <img src="{{ asset('assets/img/shopping-cart.png') }}" alt="Mon panier" class="cart-icon">
@@ -141,9 +142,9 @@ l'oliveraie de la Fargouinette est idéalement placée au sein du domaine d'Appe
         <!-- FOOTER -->
         <footer class="footer-custom bg-dark text-white">
             <p class="float-right mr-3"><a href="#">Retour en haut</a></p>
-            <p>&copy; 2022 La Fargouinette<br>
+            <p>&copy; {{ "now"|date("Y") }} | La Fargouinette<br>
             <small> handmade with heart by
-            <a href="https://www.nicolasbarthes.com" target="blank">NB</a>
+            <a href="https://www.nicolasbarthes.com" target="blank">|NB|</a>
             </p>
         </footer>
     </main>
